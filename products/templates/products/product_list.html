@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+        {% load bootstrap3 %}
+
+        {% block title %} &bull; Product List{% endblock %}
+
+        {% block content %}
+
+
+        <div class="panel-body">
+       <div class="row">
+
+	        <div class="col-lg-6">
+
+           {% for product in products %}
+
+
+
+                        <h3 class="panel-title"><a class="btn btn-default pull-right" href="{{ product.get_absolute_url }}">{{ product.name }}</a></h3>
+
+                    </div>
+
+        {% if product.image %}
+       <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        {% endif %}
+
+
+</div>
+        </div>
+             <div class="col-lg-6">
+
+		         <div class="well">{{ product.description }}</div>
+
+                  <button type="button" class="btn btn-default">{{ product.price }}$</button>
+
+                {% if product.sale_price %}
+                 <button type="button" class="btn btn-danger">SALE {{ product.sale_price }}$</button>
+
+            {% endif %}
+
+        {% endfor %}
+                 </div>
+
+
+        {% endblock %}

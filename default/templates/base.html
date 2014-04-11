@@ -1,0 +1,32 @@
+{% load bootstrap3 %}
+<html>
+<head>
+    <title>MebelM{% block title %}{% endblock %}</title>
+     {% bootstrap_css %}
+</head>
+<body>
+{% block content%}
+{% endblock %}
+
+
+{% if catalogs %}
+<div class="panel panel-default">
+<div class="panel-heading">
+  <h3 class="panel-title">Catalogs</h3>
+</div><div class="panel-body">
+{% for catalog in catalogs %}
+  <div class="col-sm-1 col-md-1 col-lg-1">
+
+      <a href="{{ catalog.get_absolute_url }}"><img src="{{ catalog.image.url }}" alt="{{ catalog.title }}"></a>
+
+  </div>
+  {% endfor %}
+</div></div>
+{% endif %}
+</div><!-- container -->
+<script src="{% bootstrap_jquery_url %}"></script>
+
+{% bootstrap_javascript %}
+
+</body>
+</html>

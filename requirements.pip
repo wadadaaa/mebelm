@@ -1,0 +1,9 @@
+Django
+dj-database-url
+django-dotenv
+django-getenv
+Pillow
+
+raven
+uWSGI
+newrelic

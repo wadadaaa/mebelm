@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+{% for catalog in catalog_list %}
+        <b>{{ catalog.title }}</b>
+         <p><a href="{{ catalog.get_absolute_url }}">{{ catalog }}</a></p>
+
+{% endfor %}
+
+
+{% endblock %}
