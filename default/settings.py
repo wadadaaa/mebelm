@@ -1,5 +1,6 @@
 import os
 from getenv import env
+import os.path
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 cd = lambda *a: os.path.join(ROOT, *a)
@@ -23,6 +24,12 @@ DEBUG = True
 TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
+
+
+
+ROOT_URLCONF = '%s.urls' % PROJECT
+
+WSGI_APPLICATION = '%s.wsgi.application' % PROJECT
 
 
 # Application definition
@@ -51,11 +58,27 @@ MIDDLEWARE_CLASSES = (
     'raven.contrib.django.middleware.SentryResponseErrorIdMiddleware',
 )
 
-ROOT_URLCONF = '%s.urls' % PROJECT
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.core.context_processors.request',
+    'django.contrib.messages.context_processors.messages',
+)
 
-WSGI_APPLICATION = '%s.wsgi.application' % PROJECT
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+)
 
 
+STATICFILES_DIRS = (
+)
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
@@ -78,22 +101,12 @@ USE_L10N = True
 USE_TZ = True
 
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.contrib.auth.context_processors.auth',
-    'django.core.context_processors.debug',
-    'django.core.context_processors.i18n',
-    'django.core.context_processors.media',
-    'django.core.context_processors.static',
-    'django.core.context_processors.tz',
-    'django.core.context_processors.request',
-    'django.contrib.messages.context_processors.messages',
-)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 MEDIA_ROOT = cd('public/uploads')
 MEDIA_URL = '/uploads/'
-STATIC_ROOT = cd('public', 'assets')
+STATIC_ROOT = cd('public/assets')
 STATIC_URL = '/assets/'
 
 TEMPLATE_DIRS = (

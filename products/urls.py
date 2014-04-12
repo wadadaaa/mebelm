@@ -4,6 +4,7 @@ from django.views.generic import ListView, DetailView
 from .models import Product
 
 urlpatterns = patterns('',
+
     url(r'^$', ProductsList.as_view(), name='products_list'),
     #url(r'^$', ProductDetail.as_view(), name='product_detail'),
     #url(r'^view/(?P<pk>\d+)/$', ProductDetail.as_view(), name='product_detail'),

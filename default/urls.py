@@ -6,11 +6,11 @@ admin.autodiscover()
 
 
 urlpatterns = patterns('',
-     url(r'^assets/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.STATIC_ROOT, 'show_indexes': True}),
-     url(r'^uploads/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
+    url(r'^assets/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.STATIC_ROOT, 'show_indexes': True}),
+    url(r'^uploads/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', TemplateView.as_view(template_name='home.html'), name='home'),
+    url(r'^$', TemplateView.as_view(template_name='base_bootstrap.html'), name='home'),
     url(r'^products/', include('products.urls')),
 )
 
